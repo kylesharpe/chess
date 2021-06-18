@@ -78,6 +78,13 @@ function Wrook () {
         `, SpriteKind.Player)
     Wrookh1.setPosition(132, 114)
 }
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (mySprite.overlapsWith(Wpawna2)) {
+        controller.moveSprite(Wpawna2, 30, 30)
+    } else {
+        Wpawna2.setVelocity(0, 0)
+    }
+})
 function Wknight () {
     Wknightb1 = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -118,25 +125,31 @@ function Wknight () {
         `, SpriteKind.Player)
     Wknightg1.setPosition(118, 112)
 }
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite.destroy()
+    Wpawna2.destroy()
+    mySprite.x = 0
+})
 function Cursor () {
-    Wpawna2 = sprites.create(img`
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-        7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+    mySprite = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . 7 7 7 7 7 7 7 7 7 7 7 . 
+        . . . . 7 7 7 7 7 7 7 7 7 7 7 . 
+        . . . . 7 7 7 7 7 7 7 7 7 7 7 . 
+        . . . . 7 7 7 7 7 7 7 7 7 7 7 . 
+        . . . . 7 7 7 7 7 7 7 7 7 7 7 . 
+        . . . . 7 7 7 7 7 7 7 7 7 7 7 . 
+        . . . . 7 7 7 7 7 7 7 7 7 7 7 . 
+        . . . . 7 7 7 7 7 7 7 7 7 7 7 . 
+        . . . . 7 7 7 7 7 7 7 7 7 7 7 . 
+        . . . . 7 7 7 7 7 7 7 7 7 7 7 . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
         `, SpriteKind.Player)
+    controller.moveSprite(mySprite, 30, 30)
 }
 function Wqueen () {
     Wqueend1 = sprites.create(img`
@@ -673,9 +686,10 @@ let Bpawnc7: Sprite = null
 let Bpawnb7: Sprite = null
 let Bpawna7: Sprite = null
 let Wqueend1: Sprite = null
-let Wpawna2: Sprite = null
 let Wknightg1: Sprite = null
 let Wknightb1: Sprite = null
+let Wpawna2: Sprite = null
+let mySprite: Sprite = null
 let Wrookh1: Sprite = null
 let Wrooka1: Sprite = null
 let Wbishopf1: Sprite = null
@@ -693,3 +707,4 @@ Wking()
 Bking()
 Wqueen()
 Bqueen()
+Cursor()
